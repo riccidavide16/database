@@ -10,6 +10,7 @@ package database;
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.*;
 
 public class DataBase {
 
@@ -17,10 +18,20 @@ public class DataBase {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:scuola.db");
-            System.out.println("Connessione riuscita!");
+        
+        String url = "jdbc:sqlite:scuola.db";
+        
+        try ( Connection conn = DriverManager.getConnection(url);
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery("SELECT * FROM classi")){
+            while(rs.next()){
+                System.out.println(
+                        rs.getString("id_classe") + " - " +
+                        rs.getString("indirizzo")
+                );
+            }
+           
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
