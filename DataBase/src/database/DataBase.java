@@ -8,6 +8,9 @@ package database;
  *
  * @author ricci.davide
  */
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 public class DataBase {
 
     /**
@@ -15,6 +18,13 @@ public class DataBase {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:scuola.db");
+            System.out.println("Connessione riuscita!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
     
 }
