@@ -10,13 +10,25 @@ package db;
  *
  * @author ricci.davide
  */
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.*;
+
 public class Db {
 
     /**
      * @param args the command line arguments
      */
+    
+    
+    
     public static void main(String[] args) {
+        
         String url = "jdbc:sqlite:scuola.db";
+        MenuForm mf = new MenuForm();
+        mf.setVisible(true);
+       
         
         try ( Connection conn = DriverManager.getConnection(url);
                 Statement st = conn.createStatement();
