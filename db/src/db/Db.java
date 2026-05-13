@@ -25,25 +25,7 @@ public class Db {
     
     public static void main(String[] args) {
         
-        String url = "jdbc:sqlite:scuola.db";
-        MenuForm mf = new MenuForm();
-        mf.setVisible(true);
-       
         
-        try ( Connection conn = DriverManager.getConnection(url);
-                Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM classi")){
-            while(rs.next()){
-                System.out.println(
-                        rs.getString("id_classe") + " - " +
-                        rs.getString("indirizzo")
-                );
-            }
-           
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
     
