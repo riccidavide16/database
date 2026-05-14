@@ -28,34 +28,51 @@ public class MenuForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbl_ElencoGite = new javax.swing.JLabel();
+        cmb_Gite = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
+        txa_AlunniGite = new javax.swing.JTextArea();
+        lbl_ElencoClassi = new javax.swing.JLabel();
+        cmb_Classi = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txa_ElencoClassi = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
-        jLabel1.setText("ELENCO CLASSI");
+        lbl_ElencoGite.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_ElencoGite.setText("ELENCO GITE");
+        getContentPane().add(lbl_ElencoGite);
+        lbl_ElencoGite.setBounds(20, 270, 200, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(282, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
-        );
+        cmb_Gite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gite" }));
+        getContentPane().add(cmb_Gite);
+        cmb_Gite.setBounds(20, 310, 130, 22);
+
+        txa_AlunniGite.setEditable(false);
+        txa_AlunniGite.setColumns(20);
+        txa_AlunniGite.setRows(5);
+        jScrollPane1.setViewportView(txa_AlunniGite);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 370, 240, 160);
+
+        lbl_ElencoClassi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_ElencoClassi.setText("ELENCO CLASSI");
+        getContentPane().add(lbl_ElencoClassi);
+        lbl_ElencoClassi.setBounds(20, 0, 200, 25);
+
+        cmb_Classi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classi" }));
+        getContentPane().add(cmb_Classi);
+        cmb_Classi.setBounds(20, 40, 130, 22);
+
+        txa_ElencoClassi.setEditable(false);
+        txa_ElencoClassi.setColumns(20);
+        txa_ElencoClassi.setRows(5);
+        jScrollPane2.setViewportView(txa_ElencoClassi);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(20, 90, 240, 160);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -86,7 +103,13 @@ public class MenuForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cmb_Classi;
+    private javax.swing.JComboBox<String> cmb_Gite;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbl_ElencoClassi;
+    private javax.swing.JLabel lbl_ElencoGite;
+    private javax.swing.JTextArea txa_AlunniGite;
+    private javax.swing.JTextArea txa_ElencoClassi;
     // End of variables declaration//GEN-END:variables
 }
