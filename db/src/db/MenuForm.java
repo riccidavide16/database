@@ -29,13 +29,14 @@ public class MenuForm extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_ElencoGite = new javax.swing.JLabel();
-        cmb_Gite = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         txa_AlunniGite = new javax.swing.JTextArea();
         lbl_ElencoClassi = new javax.swing.JLabel();
         cmb_Classi = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         txa_ElencoClassi = new javax.swing.JTextArea();
+        btm_mostraPartGita = new javax.swing.JButton();
+        btm_mostraClassi2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -45,24 +46,20 @@ public class MenuForm extends javax.swing.JFrame {
         getContentPane().add(lbl_ElencoGite);
         lbl_ElencoGite.setBounds(20, 270, 200, 25);
 
-        cmb_Gite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gite" }));
-        getContentPane().add(cmb_Gite);
-        cmb_Gite.setBounds(20, 310, 130, 22);
-
         txa_AlunniGite.setEditable(false);
         txa_AlunniGite.setColumns(20);
         txa_AlunniGite.setRows(5);
         jScrollPane1.setViewportView(txa_AlunniGite);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 370, 240, 160);
+        jScrollPane1.setBounds(20, 310, 370, 220);
 
         lbl_ElencoClassi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_ElencoClassi.setText("ELENCO CLASSI");
         getContentPane().add(lbl_ElencoClassi);
         lbl_ElencoClassi.setBounds(20, 0, 200, 25);
 
-        cmb_Classi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classi" }));
+        cmb_Classi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3D", "3C", "3I", "4D", "4C", "4I", "5D", "5C", "5I" }));
         getContentPane().add(cmb_Classi);
         cmb_Classi.setBounds(20, 40, 130, 22);
 
@@ -72,10 +69,27 @@ public class MenuForm extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txa_ElencoClassi);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(20, 90, 240, 160);
+        jScrollPane2.setBounds(20, 90, 370, 160);
+
+        btm_mostraPartGita.setText("MOSTRA");
+        btm_mostraPartGita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_mostraPartGitaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btm_mostraPartGita);
+        btm_mostraPartGita.setBounds(20, 550, 370, 23);
+
+        btm_mostraClassi2.setText("MOSTRA");
+        getContentPane().add(btm_mostraClassi2);
+        btm_mostraClassi2.setBounds(170, 40, 90, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btm_mostraPartGitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_mostraPartGitaActionPerformed
+    
+    }//GEN-LAST:event_btm_mostraPartGitaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,8 +117,9 @@ public class MenuForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btm_mostraClassi2;
+    private javax.swing.JButton btm_mostraPartGita;
     private javax.swing.JComboBox<String> cmb_Classi;
-    private javax.swing.JComboBox<String> cmb_Gite;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_ElencoClassi;
