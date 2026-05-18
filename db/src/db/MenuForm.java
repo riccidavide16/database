@@ -106,10 +106,7 @@ public class MenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btm_mostraPartGitaActionPerformed
 
     private void btm_mostraClassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_mostraClassiActionPerformed
-        Gestore g = new Gestore();
-        String classe = cmb_Classi.getSelectedItem().toString();
-
-        txa_AlunniGite.setText(g.mostraAlunniClasse(classe));        // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btm_mostraClassiActionPerformed
 
     /**

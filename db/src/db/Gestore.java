@@ -84,31 +84,4 @@ public class Gestore {
         return risultato;
     
      }
-     public String mostraAlunniClasse(String classe) {
-
-    String testo = "";
-
-    try (
-        Connection conn = DriverManager.getConnection(url);
-        PreparedStatement ps = conn.prepareStatement(
-            "SELECT * FROM alunni WHERE classe = ?"
-        )
-    ) {
-
-        ps.setString(1, classe);
-
-        ResultSet rs = ps.executeQuery();
-
-        while (rs.next()) {
-
-            testo += rs.getString("nome") + " "
-                    + rs.getString("cognome") + "\n";
-        }
-
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-
-    return testo;
-}
 }
