@@ -16,6 +16,26 @@ public class Gestore {
     
     private String url = "jdbc:sqlite:scuola.db";
     
+    public ArrayList<String> mostraClassi(){
+        ArrayList<String> classi = new ArrayList<>();
+        
+          try(Connection conn = DriverManager.getConnection(url);              Statement st = conn.createStatement();
+              ResultSet rs = st.executeQuery("SELECT * FROM classi")) {
+              
+              while(rs.next()){
+                  System.out.println(
+                  rs.getString("id_classe") + " - " +
+                  rs.getString("indirizzo")
+                  );
+              }
+          } 
+          catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return classi;
+    }
+    
     public ArrayList<String> leggiStudenti(String cb_value) {
         ArrayList<String> studenti = new ArrayList<>();
         String idClasseCercato = cb_value.split(" - ")[0];
