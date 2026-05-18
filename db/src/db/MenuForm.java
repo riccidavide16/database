@@ -17,6 +17,13 @@ public class MenuForm extends javax.swing.JFrame {
      */
     public MenuForm() {
         initComponents();
+        Gestore g = new Gestore();
+        cmb_Classi.removeAllItems();
+
+ for(String c : g.mostraClassi()) {
+
+    cmb_Classi.addItem(c);
+} 
     }
 
     /**
@@ -36,7 +43,7 @@ public class MenuForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txa_ElencoClassi = new javax.swing.JTextArea();
         btm_mostraPartGita = new javax.swing.JButton();
-        btm_mostraClassi2 = new javax.swing.JButton();
+        btm_mostraClassi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -80,16 +87,30 @@ public class MenuForm extends javax.swing.JFrame {
         getContentPane().add(btm_mostraPartGita);
         btm_mostraPartGita.setBounds(20, 550, 370, 23);
 
-        btm_mostraClassi2.setText("MOSTRA");
-        getContentPane().add(btm_mostraClassi2);
-        btm_mostraClassi2.setBounds(170, 40, 90, 23);
+        btm_mostraClassi.setText("MOSTRA");
+        btm_mostraClassi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_mostraClassiActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btm_mostraClassi);
+        btm_mostraClassi.setBounds(170, 40, 90, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btm_mostraPartGitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_mostraPartGitaActionPerformed
-    
+        Gestore g = new Gestore();
+        String testo = g.leggiPartecipazioneGita();
+        txa_AlunniGite.setText(testo);
     }//GEN-LAST:event_btm_mostraPartGitaActionPerformed
+
+    private void btm_mostraClassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_mostraClassiActionPerformed
+        Gestore g = new Gestore();
+        String classe = cmb_Classi.getSelectedItem().toString();
+
+        txa_AlunniGite.setText(g.mostraAlunniClasse(classe));        // TODO add your handling code here:
+    }//GEN-LAST:event_btm_mostraClassiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +138,7 @@ public class MenuForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btm_mostraClassi2;
+    private javax.swing.JButton btm_mostraClassi;
     private javax.swing.JButton btm_mostraPartGita;
     private javax.swing.JComboBox<String> cmb_Classi;
     private javax.swing.JScrollPane jScrollPane1;

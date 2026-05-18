@@ -19,14 +19,12 @@ public class Gestore {
     public ArrayList<String> mostraClassi(){
         ArrayList<String> classi = new ArrayList<>();
         
-          try(Connection conn = DriverManager.getConnection(url);              Statement st = conn.createStatement();
+          try(Connection conn = DriverManager.getConnection(url);  
+              Statement st = conn.createStatement();
               ResultSet rs = st.executeQuery("SELECT * FROM classi")) {
               
               while(rs.next()){
-                  System.out.println(
-                  rs.getString("id_classe") + " - " +
-                  rs.getString("indirizzo")
-                  );
+                 classi.add(rs.getString("id_classe"));
               }
           } 
           catch (Exception e) {
@@ -55,8 +53,9 @@ public class Gestore {
         }
         return studenti;
     }
-     public void leggiPartecipazioneGita() {
-        System.out.println("elenco degli alunni che partecipano ad  una gita:");
+     public String leggiPartecipazioneGita() {
+         String risultato = " ";
+        
         try (Connection conn = DriverManager.getConnection(url); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery("SELECT alunni.nome, alunni.cognome, gite.destinazione, gite.prezzo, partecipanti.pagato "  + "FROM alunni JOIN partecipanti ON alunni.id_alunno = partecipanti.id_alunno JOIN gite ON partecipanti.id_gita = gite.id_gita")) {
                
                 while (rs.next()) {
@@ -72,12 +71,44 @@ public class Gestore {
                 } else {
                     pagatoTesto = "NO";
                 }
-                System.out.println(nome + " - " + cognome + " - " + destinazione + " - " + prezzo + " - " + pagatoTesto);
+                risultato += rs.getString("nome") + " "
+                    + rs.getString("cognome") + " - "
+                    + rs.getString("destinazione") + " - "
+                    + rs.getDouble("prezzo") + "€\n";
+                
             }
         } catch (Exception e) {
-            System.err.println("Errore durante la lettura: " + e.getMessage());
+            
             e.printStackTrace();
         }
+        return risultato;
     
      }
+     public String mostraAlunniClasse(String classe) {
+
+    String testo = "";
+
+    try (
+        Connection conn = DriverManager.getConnection(url);
+        PreparedStatement ps = conn.prepareStatement(
+            "SELECT * FROM alunni WHERE classe = ?"
+        )
+    ) {
+
+        ps.setString(1, classe);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+
+            testo += rs.getString("nome") + " "
+                    + rs.getString("cognome") + "\n";
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return testo;
+}
 }
