@@ -4,6 +4,8 @@
  */
 package db;
 
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
 /**
  *
  * @author ricci.davide
@@ -18,8 +20,57 @@ public class MenuForm extends javax.swing.JFrame {
     public MenuForm() {
         initComponents();
         Gestore g = new Gestore();
+         caricaTabella();
      
     }
+    private void caricaTabella() {
+
+    // modello della tabella
+    DefaultTableModel model =
+            (DefaultTableModel) tbl_gite.getModel();
+
+    // pulisce la tabella
+    model.setRowCount(0);
+
+    Gestore g = new Gestore();
+
+    try {
+
+        ResultSet rs = g.leggiGite();
+
+        while(rs.next()){
+
+            String nome = rs.getString("nome");
+            String cognome = rs.getString("cognome");
+            String classe = rs.getString("id_classe");
+            String destinazione = rs.getString("destinazione");
+            double prezzo = rs.getDouble("prezzo");
+            int pagatoInt = rs.getInt("pagato");
+
+            String pagato;
+
+            if(pagatoInt == 1){
+                pagato = "SI";
+            }else{
+                pagato = "NO";
+            }
+
+            model.addRow(new Object[]{
+
+                nome,
+                cognome,
+                classe,
+                destinazione,
+                prezzo,
+                pagato
+            });
+        }
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +88,10 @@ public class MenuForm extends javax.swing.JFrame {
         btm_mostraClassi = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_gite = new javax.swing.JTable();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -73,9 +127,9 @@ public class MenuForm extends javax.swing.JFrame {
         getContentPane().add(btm_mostraClassi);
         btm_mostraClassi.setBounds(170, 40, 90, 23);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(0, 250, 900, 30);
+        jSeparator1.setBounds(0, 620, 540, 50);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_gite.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -94,16 +148,33 @@ public class MenuForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(tbl_gite);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(20, 300, 400, 260);
+        jScrollPane3.setBounds(20, 300, 500, 260);
+
+        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator4);
+        jSeparator4.setBounds(540, 0, 10, 620);
+        getContentPane().add(jSeparator5);
+        jSeparator5.setBounds(0, 250, 540, 30);
+
+        jButton1.setText("DELETE");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(30, 580, 130, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btm_mostraClassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_mostraClassiActionPerformed
-        // TODO add your handling code here:
+       
+    String classeSelezionata = cmb_Classi.getSelectedItem().toString();
+    Gestore g = new Gestore();
+    java.util.ArrayList<String> studenti = g.leggiStudenti(classeSelezionata);
+    txa_ElencoClassi.setText("");
+    for(String s : studenti){
+        txa_ElencoClassi.append(s + "\n");
+    }
     }//GEN-LAST:event_btm_mostraClassiActionPerformed
 
     /**
@@ -134,12 +205,15 @@ public class MenuForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btm_mostraClassi;
     private javax.swing.JComboBox<String> cmb_Classi;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel lbl_ElencoClassi;
     private javax.swing.JLabel lbl_ElencoGite;
+    private javax.swing.JTable tbl_gite;
     private javax.swing.JTextArea txa_ElencoClassi;
     // End of variables declaration//GEN-END:variables
 }

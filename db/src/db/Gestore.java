@@ -36,7 +36,7 @@ public class Gestore {
     
     public ArrayList<String> leggiStudenti(String cb_value) {
         ArrayList<String> studenti = new ArrayList<>();
-        String idClasseCercato = cb_value.split(" - ")[0];
+       String idClasseCercato = cb_value;
 
         String query = "SELECT id_alunno, nome, cognome FROM alunni WHERE id_classe = ?";
 
@@ -45,7 +45,7 @@ public class Gestore {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
 
-                    studenti.add(rs.getInt("id_alunno") + " - " + rs.getString("nome") + " " + rs.getString("cognome"));
+                    studenti.add(rs.getString("nome") + " " + rs.getString("cognome"));
                 }
             }
         } catch (Exception e) {
@@ -85,4 +85,36 @@ public class Gestore {
         return risultato;
     
      }
+     public ResultSet leggiGite() {
+
+    ResultSet rs = null;
+
+    String query =
+        "SELECT alunni.nome, " +
+        "alunni.cognome, " +
+        "alunni.id_classe, " +
+        "gite.destinazione, " +
+        "gite.prezzo, " +
+        "partecipanti.pagato " +
+        "FROM partecipanti " +
+        "INNER JOIN alunni " +
+        "ON partecipanti.id_alunno = alunni.id_alunno " +
+        "INNER JOIN gite " +
+        "ON partecipanti.id_gita = gite.id_gita";
+
+    try {
+
+        Connection conn = DriverManager.getConnection(url);
+
+        PreparedStatement ps = conn.prepareStatement(query);
+
+        rs = ps.executeQuery();
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+    }
+
+    return rs;
+}
 }
