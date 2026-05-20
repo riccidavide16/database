@@ -18,14 +18,8 @@ public class MenuForm extends javax.swing.JFrame {
     public MenuForm() {
         initComponents();
         Gestore g = new Gestore();
-        cmb_Classi.removeAllItems();
-
- for(String c : g.mostraClassi()) {
-
-    cmb_Classi.addItem(c);
-} 
+     
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,14 +30,14 @@ public class MenuForm extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_ElencoGite = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txa_AlunniGite = new javax.swing.JTextArea();
         lbl_ElencoClassi = new javax.swing.JLabel();
         cmb_Classi = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         txa_ElencoClassi = new javax.swing.JTextArea();
-        btm_mostraPartGita = new javax.swing.JButton();
         btm_mostraClassi = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -52,14 +46,6 @@ public class MenuForm extends javax.swing.JFrame {
         lbl_ElencoGite.setText("ELENCO GITE");
         getContentPane().add(lbl_ElencoGite);
         lbl_ElencoGite.setBounds(20, 270, 200, 25);
-
-        txa_AlunniGite.setEditable(false);
-        txa_AlunniGite.setColumns(20);
-        txa_AlunniGite.setRows(5);
-        jScrollPane1.setViewportView(txa_AlunniGite);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 310, 370, 220);
 
         lbl_ElencoClassi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_ElencoClassi.setText("ELENCO CLASSI");
@@ -76,16 +62,7 @@ public class MenuForm extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txa_ElencoClassi);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(20, 90, 370, 160);
-
-        btm_mostraPartGita.setText("MOSTRA");
-        btm_mostraPartGita.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_mostraPartGitaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btm_mostraPartGita);
-        btm_mostraPartGita.setBounds(20, 550, 370, 23);
+        jScrollPane2.setBounds(20, 70, 370, 160);
 
         btm_mostraClassi.setText("MOSTRA");
         btm_mostraClassi.addActionListener(new java.awt.event.ActionListener() {
@@ -95,15 +72,35 @@ public class MenuForm extends javax.swing.JFrame {
         });
         getContentPane().add(btm_mostraClassi);
         btm_mostraClassi.setBounds(170, 40, 90, 23);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(0, 250, 900, 30);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Cognome", "Classe", "Destinazione", "Prezzo", "Pagato"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(20, 300, 400, 260);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btm_mostraPartGitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_mostraPartGitaActionPerformed
-        Gestore g = new Gestore();
-        String testo = g.leggiPartecipazioneGita();
-        txa_AlunniGite.setText(testo);
-    }//GEN-LAST:event_btm_mostraPartGitaActionPerformed
 
     private void btm_mostraClassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_mostraClassiActionPerformed
         // TODO add your handling code here:
@@ -136,13 +133,13 @@ public class MenuForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btm_mostraClassi;
-    private javax.swing.JButton btm_mostraPartGita;
     private javax.swing.JComboBox<String> cmb_Classi;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_ElencoClassi;
     private javax.swing.JLabel lbl_ElencoGite;
-    private javax.swing.JTextArea txa_AlunniGite;
     private javax.swing.JTextArea txa_ElencoClassi;
     // End of variables declaration//GEN-END:variables
 }

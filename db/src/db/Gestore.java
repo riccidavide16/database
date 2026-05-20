@@ -74,7 +74,8 @@ public class Gestore {
                 risultato += rs.getString("nome") + " "
                     + rs.getString("cognome") + " - "
                     + rs.getString("destinazione") + " - "
-                    + rs.getDouble("prezzo") + "€\n";
+                    + rs.getDouble("prezzo") + "€\n" 
+                    + "\n" ;
                 
             }
         } catch (Exception e) {
