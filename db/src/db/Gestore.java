@@ -117,4 +117,27 @@ public class Gestore {
 
     return rs;
 }
+     public void eliminaPartecipanteGita(int idAlunno) {
+
+    String query =
+        "DELETE FROM partecipanti WHERE id_alunno = ?";
+
+    try (
+
+        Connection conn = DriverManager.getConnection(url);
+
+        PreparedStatement ps =
+            conn.prepareStatement(query)
+
+    ) {
+
+        ps.setInt(1, idAlunno);
+
+        ps.executeUpdate();
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+    }
+}
 }

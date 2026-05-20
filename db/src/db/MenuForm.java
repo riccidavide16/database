@@ -91,7 +91,7 @@ public class MenuForm extends javax.swing.JFrame {
         tbl_gite = new javax.swing.JTable();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btm_eliminaPartecipanteGita = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -159,9 +159,14 @@ public class MenuForm extends javax.swing.JFrame {
         getContentPane().add(jSeparator5);
         jSeparator5.setBounds(0, 250, 540, 30);
 
-        jButton1.setText("DELETE");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(30, 580, 130, 23);
+        btm_eliminaPartecipanteGita.setText("DELETE");
+        btm_eliminaPartecipanteGita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_eliminaPartecipanteGitaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btm_eliminaPartecipanteGita);
+        btm_eliminaPartecipanteGita.setBounds(30, 580, 130, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +181,10 @@ public class MenuForm extends javax.swing.JFrame {
         txa_ElencoClassi.append(s + "\n");
     }
     }//GEN-LAST:event_btm_mostraClassiActionPerformed
+
+    private void btm_eliminaPartecipanteGitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_eliminaPartecipanteGitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btm_eliminaPartecipanteGitaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,9 +212,9 @@ public class MenuForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btm_eliminaPartecipanteGita;
     private javax.swing.JButton btm_mostraClassi;
     private javax.swing.JComboBox<String> cmb_Classi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
